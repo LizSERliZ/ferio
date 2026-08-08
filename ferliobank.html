@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="ferliobank.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><h1>My Portfolio </h1></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1 id="user-name" contenteditable="false">Focus oloth</h1>
+        <p id="user-bio" contenteditable="false">Guitarist</p>
+        <button id="edit-btn" onclick="toggleEditMode()">Edit information</button>
+        <button id="save-btn" onclick="saveData()" style="display:none;">Save</button>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        
+        <!-- ปุ่มรีเซ็ตกลับมาดูรวม 3 คอลัมน์ -->
+        <button id="reset-view-btn" class="reset-btn" onclick="showAllCategories()" style="display:none;"> Back to Main Showcase</button>
+
+        <!-- คอนเทนเนอร์ใหญ่ที่จะวาง Music, Video, Picture เรียงขนานกัน -->
+        <div class="main-portfolio-container" id="main-portfolio">
+            
+            <!-- 1. คอลัมน์ Music -->
+            <div class="media-column" id="col-music">
+                <div class="column-header">
+                    <h3>Music</h3>
+                </div>
+                <div class="column-content">
+                    <div class="card">
+                        <h3>song1</h3>
+                        <audio controls>
+                            <source src="mp 3 for code/Civic - The Grey Room _ Density & Time.mp3" type="audio/mpeg">
+                        </audio>
+                        <a href="mp 3 for code/Civic - The Grey Room _ Density & Time.mp3" download class="download-btn">Download MP3</a>
+                    </div>
+                    <!-- ผลงานเพิ่มเติมที่จะแสดงเมื่อกด See More -->
+                    <div class="card extra-item hidden">
+                        <h3>song2</h3>
+                        <audio controls>
+                            <source src="mp 3 for code/Civic - The Grey Room _ Density & Time.mp3" type="audio/mpeg">
+                        </audio>
+                        <a href="mp 3 for code/Civic - The Grey Room _ Density & Time.mp3" download class="download-btn">Download MP3</a>
+                    </div>
+                </div>
+                <button class="see-more-btn" onclick="expandCategory('music')">See More Music </button>
+            </div>
+
+            <!-- 2. คอลัมน์ Video -->
+            <div class="media-column" id="col-video">
+                <div class="column-header">
+                    <h3>Video</h3>
+                </div>
+                <div class="column-content">
+                    <div class="card">
+                        <h3>video 1</h3>
+                        <video controls width="100%">
+                            <source src="houp & video for code/IMG_1806.MOV" type="video/mp4">
+                        </video>
+                        <a href="houp & video for code/IMG_1806.MOV" download class="download-btn">Download MP4</a>
+                    </div>
+                    <!-- ผลงานเพิ่มเติม -->
+                    <div class="card extra-item hidden">
+                        <h3>video 2</h3>
+                        <video controls width="100%">
+                            <source src="houp & video for code/IMG_1806.MOV" type="video/mp4">
+                        </video>
+                        <a href="houp & video for code/IMG_1806.MOV" download class="download-btn">Download MP4</a>
+                    </div>
+                </div>
+                <button class="see-more-btn" onclick="expandCategory('video')">See More Video </button>
+            </div>
+
+            <!-- 3. คอลัมน์ Picture -->
+            <div class="media-column" id="col-photo">
+                <div class="column-header">
+                    <h3>Picture</h3>
+                </div>
+                <div class="column-content">
+                    <div class="card">
+                        <h3>picture 1</h3>
+                        <img src="houp & video for code/9818.jpg" alt="Photo" style="width:100%; border-radius:8px;">
+                        <a href="houp & video for code/9818.jpg" download class="download-btn">Download Picture</a>
+                    </div>
+                    <!-- ผลงานเพิ่มเติม -->
+                    <div class="card extra-item hidden">
+                        <h3>picture 2</h3>
+                        <img src="houp & video for code/9810.jpg" alt="Photo" style="width:100%; border-radius:8px;">
+                        <a href="houp & video for code/9810.jpg" download class="download-btn">Download Picture</a>
+                    </div>
+                </div>
+                <button class="see-more-btn" onclick="expandCategory('photo')">See More Pictures </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About & Contact -->
+    <section id="about" class="section info-section">
+        <h2>About Me</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea aliquid suscipit, sed similique, rerum quibusdam quas porro in beatae dolorem repellendus earum. Labore dolore aperiam beatae quod nostrum ipsam sint.</p>
+    </section>
+
+    <section id="contact" class="section info-section">
+        <h2>Contact</h2>
+        <p>Email: Focus.oloth@gmail.com</p>
+        <p>Phone number: +8562098922788</p>
+        <p>Intragram: focus_fomost.exe</p>
+        <p>Facebook: Focuz oloth </p>
+    </section>
+    <!-- <nav class="navbar">
+    <div class="logo" style="cursor:pointer;" onclick="showAllCategories()">PORTFOLIO</div>
+    <ul class="nav-links">
+         ใส่ onclick="showAllCategories()" ให้ปุ่ม Home และ Portfolio 
+        <li><a href="#home" onclick="showAllCategories()">Home</a></li>
+        <li><a href="#portfolio" onclick="showAllCategories()">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav> -->
+
+    <script src="ferilobank.js"></script>
+</body>
+</html>

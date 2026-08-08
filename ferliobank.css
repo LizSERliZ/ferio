@@ -1,0 +1,188 @@
+:root {
+    --bg-color: #fcfcfc;
+    --text-color: #1a1a1a;
+    --accent-color: #2b2b2b;
+    --card-bg: #ffffff;
+    --border-color: #e5e5e5;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: #f4f4f5;
+}
+
+.section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* จัดเลย์เอาต์หลักวางเรียงขนานกัน 3 คอลัมน์ */
+.main-portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* เมื่อขยายแสดงหมวดเดียว จะปรับเป็น Grid หลายคอลัมน์ให้อัตโนมัติ */
+.main-portfolio-container.expanded-mode {
+    grid-template-columns: 1fr;
+}
+
+.main-portfolio-container.expanded-mode .column-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.media-column {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.column-header h3 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 0.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.card.hidden {
+    display: none !important;
+}
+
+.see-more-btn, .reset-btn {
+    width: 100%;
+    padding: 0.7rem;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.reset-btn {
+    background: #e4e4e7;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    width: auto;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 0.8rem;
+    color: #0066cc;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+audio, video {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.info-section {
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+/* ปรับให้รองรับหน้าจอมือถือ (เรียงลงมาอัตโนมัติเมื่อจอเล็ก) */
+@media (max-width: 850px) {
+    .main-portfolio-container {
+        grid-template-columns: 1fr;
+    }
+}
+/* บังคับให้โครงสร้าง Grid มีความสูงเท่ากันทุกคอลัมน์ */
+.main-portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: stretch; /* ยืดกล่องให้สูงเท่ากันทั้งหมด */
+}
+
+/* ตั้งค่าคอลัมน์ให้เป็น Flexbox แนวตั้ง */
+.media-column {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ดันปุ่ม See More ไปดันล่างสุด */
+}
+
+.column-content {
+    flex-grow: 1; /* ให้ส่วนเนื้อหาขยายเต็มพื้นที่ที่เหลือ */
+}
+
+/* กำหนดขนาดสื่อให้สมดุล */
+.card img, .card video {
+    width: 100%;
+    height: 180px; /* ล็อกความสูงสื่อให้เท่ากัน */
+    object-fit: cover; /* ครอปรูป/วิดีโอให้อยู่ในกรอบสวยงาม ไม่เบี้ยว */
+    border-radius: 6px;
+}
+
+/* ดันปุ่ม See More ให้อยู่ล่างสุดเสมอ */
+.see-more-btn {
+    width: 100%;
+    padding: 0.7rem;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: auto; /* ดันลงล่างสุดของกล่อง */
+}
